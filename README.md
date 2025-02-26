@@ -2,7 +2,7 @@
 
 Detect languages through Raycast AI or third-party language detectors
 
-[![](https://shields.io/badge/Raycast-Pro_Enhanced-eee?labelColor=FF6363&logo=raycast&logoColor=fff&style=flat-square)](https://github.com/LitoMore/raycast-pro-extensions)
+[![](https://shields.io/badge/Raycast-Pro_Enhanced-eee?labelColor=FF6363&logo=raycast&logoColor=fff&style=flat-square)](https://github.com/LitoMore/raycast-pro-enhanced-extensions)
 
 ## Install
 
