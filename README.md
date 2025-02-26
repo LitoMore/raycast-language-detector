@@ -44,7 +44,7 @@ export declare const detect: (
 		detectors?: Detector[];
 		aiDetectOptions?: {
 			aiAskOptions?: AI.AskOptions;
-			langaugeCodes?: string[];
+			languageCodes?: string[];
 		};
 	},
 ) => Promise<Language | undefined>;
@@ -69,7 +69,7 @@ export declare const makePrompt: (
 
 export declare const detect: (
 	text: string,
-	options?: { aiAskOptions?: AI.AskOptions; langaugeCodes?: string[] },
+	options?: { aiAskOptions?: AI.AskOptions; languageCodes?: string[] },
 ) => Promise<Language | undefined>;
 
 export declare const customPromptDetect: (

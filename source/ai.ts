@@ -26,7 +26,7 @@ const ask = async (prompt: string, aiAskOptions?: AI.AskOptions) => {
 
 export type AiDetectOptions = {
 	aiAskOptions?: AI.AskOptions;
-	langaugeCodes?: string[];
+	languageCodes?: string[];
 };
 
 export const detect = async (
@@ -34,8 +34,8 @@ export const detect = async (
 	options: AiDetectOptions = {},
 ): Promise<Language | undefined> => {
 	if (!environment.canAccess(AI)) return undefined;
-	const {aiAskOptions, langaugeCodes} = options;
-	const prompt = makePrompt(text, langaugeCodes);
+	const {aiAskOptions, languageCodes} = options;
+	const prompt = makePrompt(text, languageCodes);
 	return ask(prompt, aiAskOptions);
 };
 
