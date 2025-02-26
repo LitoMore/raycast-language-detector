@@ -114,7 +114,7 @@ export declare const detect: (text: string) => Language | undefined;
 ```
 
 ```typescript
-import { detect as tinyDetect } from "raycast-language-detector/tinyld";
+import { detect } from "raycast-language-detector/tinyld";
 
 detect("一緒に泣いてくれた人");
 //=> {languageCode: 'jp', languageName: 'Japanese'}
