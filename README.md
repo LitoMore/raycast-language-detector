@@ -37,6 +37,8 @@ tinyDetect("一緒に泣いてくれた人");
 
 This uses all possible detectors in the `Detector.AI`, `Detector.LanguageDetect`, `Detector.TinyLD` order. It there is no result, it will fallback to the next detector.
 
+The fallthrough order of detectors can be customized, you can simply pass in an array of `Detector` to `options.detectors`.
+
 ```typescript
 export declare const detect: (
 	text: string,
@@ -60,6 +62,8 @@ await detect("Viel Glück");
 ### raycast-language-detector/ai
 
 This uses the [Raycast AI](https://developers.raycast.com/api-reference/ai) for detecting text.
+
+You don't have to check user's permission to Raycast AI before using this. We already handled it for you. It will return a `undefined` if the user doesn't have access to Raycast AI.
 
 ```typescript
 export declare const makePrompt: (
