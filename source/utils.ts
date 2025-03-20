@@ -1,4 +1,5 @@
 export const languageCodeToName = (languageCode: string): string => {
+	languageCode = languageCode.toLowerCase().trim();
 	try {
 		const name = new Intl.DisplayNames(['en'], {type: 'language'}).of(
 			languageCode.replace('_', '-'),
