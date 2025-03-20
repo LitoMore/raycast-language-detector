@@ -18,7 +18,8 @@ export const makePrompt = (text: string, languageCodes?: string[]) => {
 };
 
 const ask = async (prompt: string, aiAskOptions?: AI.AskOptions) => {
-	const languageCode = await AI.ask(prompt, aiAskOptions);
+	const answer = await AI.ask(prompt, aiAskOptions);
+	const languageCode = answer.trim().toLowerCase();
 	if (languageCode.startsWith('und')) return undefined;
 	const languageName = languageCodeToName(languageCode);
 	return {languageCode, languageName};
