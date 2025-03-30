@@ -15,6 +15,7 @@ npm i raycast-language-detector
 ```typescript
 import { detect } from "raycast-language-detector";
 import { detect as aiDetect } from "raycast-language-detector/ai";
+import { detect as francDetect } from "raycast-language-detector/franc";
 import { detect as langDetect } from "raycast-language-detector/languagedetect";
 import { detect as tinyDetect } from "raycast-language-detector/tinyld";
 
@@ -23,6 +24,9 @@ await detect("Favourite colour");
 
 await aiDetect("New Level Unlocked");
 //=> {languageCode: 'en', languageName: 'English'}
+
+francDetect("여기서요?");
+//=> {languageCode: 'ko', languageName: 'Korean'}
 
 langDetect("海纳百川，有容乃大");
 //=> {languageCode: 'zh', languageName: 'Chinese'}
@@ -35,7 +39,7 @@ tinyDetect("一緒に泣いてくれた人");
 
 ### raycast-language-detector
 
-This uses all possible detectors in the `Detector.AI`, `Detector.LanguageDetect`, `Detector.TinyLD` order. It there is no result, it will fallback to the next detector.
+This uses all possible detectors in the `Detector.AI`, `Detector.Franc`, `Detector.LanguageDetect`, `Detector.TinyLD` order. It there is no result, it will fallback to the next detector.
 
 The fallthrough order of detectors can be customized, you can simply pass in an array of `Detector` to `options.detectors`.
 
@@ -92,6 +96,21 @@ await detect("colour", { languageCodes: ["en_US", "en_GB"] });
 const customPrompt = makePrompt("pieapple pizza", ["en_US", "en_GB"]);
 await customPromptDetect(customPrompt);
 //=> {languageCode: 'en_US', languageName: 'American English'}
+```
+
+### raycast-language-detector/franc
+
+This uses the [franc](https://npmjs.com/franc) for detecting text.
+
+```typescript
+export declare detect: (text: string) => Language | undefined;
+```
+
+```typescript
+import { detect } from "raycast-language-detect/franc";
+
+detect("여기서요?");
+//=> {languageCode: 'ko', languageName: 'Korean'}
 ```
 
 ### raycast-language-detector/languagedetect

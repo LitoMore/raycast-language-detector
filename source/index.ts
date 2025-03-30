@@ -1,15 +1,18 @@
 import {AiDetectOptions, detect as aiDetect} from './ai.js';
+import {detect as francDetect} from './franc.js';
 import {detect as ldDetect} from './languagedetect.js';
 import {detect as tinyDetect} from './tinyld.js';
 
 export enum Detector {
 	AI = 'ai',
+	Franc = 'franc',
 	LanguageDetect = 'languagedetect',
 	TinyLD = 'tinyld',
 }
 
 const detectorMap = {
 	[Detector.AI]: aiDetect,
+	[Detector.Franc]: francDetect,
 	[Detector.LanguageDetect]: ldDetect,
 	[Detector.TinyLD]: tinyDetect,
 };
