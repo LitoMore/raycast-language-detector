@@ -143,6 +143,16 @@ detect("一緒に泣いてくれた人");
 //=> {languageCode: 'jp', languageName: 'Japanese'}
 ```
 
+### raycast-language-detector/utils
+
+It exposes some useful utilities for detecting languages.
+
+### languageCodeToName(languageCode: string): string
+
+It uses JavaScript built-in [`Intl.DisplayNames`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DisplayNames#language_display_names) for converting language code to the name.
+
+The input value can be a `languageCode` ["-" `scriptCode`] ["-" `regionCode` ] \*("-" `variant` ) subsequence of the unicode_language_id grammar in [UTS 35's Unicode Language and Locale Identifiers grammar](https://unicode.org/reports/tr35/#Unicode_language_identifier). `languageCode` is either a two letters ISO 639-1 language code or a three letters ISO 639-2 language code.
+
 ## License
 
 MIT
