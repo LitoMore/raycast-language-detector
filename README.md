@@ -147,7 +147,7 @@ detect("一緒に泣いてくれた人");
 
 It exposes some useful utilities for detecting languages.
 
-### languageCodeToName(languageCode: string): string
+#### languageCodeToName(languageCode: string): string
 
 It uses JavaScript built-in [`Intl.DisplayNames`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DisplayNames#language_display_names) for converting language code to the name.
 
