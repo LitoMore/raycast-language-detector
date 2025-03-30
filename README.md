@@ -169,6 +169,10 @@ languageCodeToName("en_GB");
 //=> 'British English'
 ```
 
+## Who's using `raycast-langauge-detector`?
+
+- [Language Detector](https://raycast.com/litomore/language-detector) - Detect languages through Raycast AI or third-party language detectors
+
 ## License
 
 MIT
