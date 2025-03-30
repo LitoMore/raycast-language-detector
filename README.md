@@ -153,6 +153,22 @@ It uses JavaScript built-in [`Intl.DisplayNames`](https://developer.mozilla.org/
 
 The input value can be a `languageCode` ["-" `scriptCode`] ["-" `regionCode` ] \*("-" `variant` ) subsequence of the unicode_language_id grammar in [UTS 35's Unicode Language and Locale Identifiers grammar](https://unicode.org/reports/tr35/#Unicode_language_identifier). `languageCode` is either a two letters ISO 639-1 language code or a three letters ISO 639-2 language code.
 
+```typescript
+import { languageCodeToName } from "raycast-language-detector/utils";
+
+languageCodeToName("en");
+// 'English'
+
+languageCodeToName("eng");
+// 'English'
+
+languageCodeToName("en_US");
+// 'American English'
+
+languageCodeToName("en_GB");
+// 'British English'
+```
+
 ## License
 
 MIT
