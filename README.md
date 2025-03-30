@@ -157,16 +157,16 @@ The input value can be a `languageCode` ["-" `scriptCode`] ["-" `regionCode` ] \
 import { languageCodeToName } from "raycast-language-detector/utils";
 
 languageCodeToName("en");
-// 'English'
+//=> 'English'
 
 languageCodeToName("eng");
-// 'English'
+//=> 'English'
 
 languageCodeToName("en_US");
-// 'American English'
+//=> 'American English'
 
 languageCodeToName("en_GB");
-// 'British English'
+//=> 'British English'
 ```
 
 ## License
