@@ -18,22 +18,30 @@ const detectorMap = {
 };
 
 export enum LanguageCodeFormat {
-	TwoLetter = "twoLetter",
-	ThreeLetter = "threeLetter"
+	TwoLetter = 'twoLetter',
+	ThreeLetter = 'threeLetter',
 }
 
 export type DetectOptions = {
 	detectors?: Detector[];
-	languageCodeFormat?: LanguageCodeFormat
+	languageCodeFormat?: LanguageCodeFormat;
 	aiDetectOptions?: AiDetectOptions;
 };
 
 export const detect = async (text: string, options?: DetectOptions) => {
-	const {detectors = Object.values(Detector), languageCodeFormat = LanguageCodeFormat.ThreeLetter, aiDetectOptions} = options ?? {};
+	const {
+		detectors = Object.values(Detector),
+		languageCodeFormat = LanguageCodeFormat.ThreeLetter,
+		aiDetectOptions,
+	} = options ?? {};
 
 	for (const detector of new Set(detectors)) {
 		// eslint-disable-next-line no-await-in-loop
-		const language = await detectorMap[detector](text, languageCodeFormat, aiDetectOptions );
+		const language = await detectorMap[detector](
+			text,
+			languageCodeFormat,
+			aiDetectOptions,
+		);
 		if (language) return language;
 	}
 
