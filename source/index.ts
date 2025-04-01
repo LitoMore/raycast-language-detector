@@ -2,7 +2,7 @@ import {AiDetectOptions, detect as aiDetect} from './ai.js';
 import {detect as francDetect} from './franc.js';
 import {detect as ldDetect} from './languagedetect.js';
 import {detect as tinyDetect} from './tinyld.js';
-import {LanguageCodeFormat} from "./types.js";
+import {LanguageCodeFormat} from './types.js';
 
 export enum Detector {
 	AI = 'ai',
@@ -28,18 +28,18 @@ export const detect = async (text: string, options?: DetectOptions) => {
 	const {
 		detectors = Object.values(Detector),
 		languageCodeFormat = LanguageCodeFormat.ThreeLetter,
-		aiDetectOptions,
+		aiDetectOptions = {},
 	} = options ?? {};
 
 	for (const detector of new Set(detectors)) {
 		// eslint-disable-next-line no-await-in-loop
-		const language = await detectorMap[detector](
-			text,
+		const language = await detectorMap[detector](text, {
 			languageCodeFormat,
 			aiDetectOptions,
-		);
+		});
 		if (language) return language;
 	}
 
 	return undefined;
 };
+

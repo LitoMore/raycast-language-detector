@@ -32,11 +32,13 @@ export type AiDetectOptions = {
 
 export const detect = async (
 	text: string,
-	_languageCodeFormat: LanguageCodeFormat,
-	options: AiDetectOptions = {},
+	options: {
+		languageCodeFormat: LanguageCodeFormat;
+		aiDetectOptions: AiDetectOptions;
+	},
 ): Promise<Language | undefined> => {
 	if (!environment.canAccess(AI)) return undefined;
-	const {aiAskOptions, languageCodes} = options;
+	const {aiAskOptions, languageCodes} = options.aiDetectOptions;
 	const prompt = makePrompt(text, languageCodes);
 	return ask(prompt, aiAskOptions);
 };
