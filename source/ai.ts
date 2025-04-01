@@ -1,7 +1,7 @@
 import {AI, environment} from '@raycast/api';
+import {toISO3} from 'tinyld';
 import {Language, LanguageCodeFormat} from './types.js';
 import {languageCodeToName} from './utils.js';
-import { toISO3} from 'tinyld';
 
 export const makePrompt = (text: string, languageCodes?: string[]) => {
 	return [
@@ -33,30 +33,30 @@ export type AiDetectOptions = {
 
 export const detect = async (
 	text: string,
-	options: {
-		languageCodeFormat: LanguageCodeFormat;
-		aiDetectOptions: AiDetectOptions;
+	options?: {
+		languageCodeFormat?: LanguageCodeFormat;
+		aiDetectOptions?: AiDetectOptions;
 	},
 ): Promise<Language | undefined> => {
 	if (!environment.canAccess(AI)) return undefined;
-	const {aiAskOptions, languageCodes} = options.aiDetectOptions;
+	const {aiAskOptions, languageCodes} = options?.aiDetectOptions ?? {};
 	const prompt = makePrompt(text, languageCodes);
 
 	const aiResponse = await ask(prompt, aiAskOptions);
 	if (!aiResponse) return undefined;
 
 	// AI prompt returns language code in xx_XX format, first part is two letter language code in ISO-639-1 standard
-	const code6931 = aiResponse.languageCode.split("_")[0]
-	if (!code6931) return undefined
+	const code6931 = aiResponse.languageCode.split('_')[0];
+	if (!code6931) return undefined;
 
 	const languageCode =
-		options.languageCodeFormat === LanguageCodeFormat.TwoLetter
+		options?.languageCodeFormat === LanguageCodeFormat.TwoLetter
 			? code6931
 			: toISO3(code6931);
 
 	if (!languageCode) return undefined;
-	const languageName = aiResponse.languageName
-	return {languageCode, languageName}
+	const languageName = aiResponse.languageName;
+	return {languageCode, languageName};
 };
 
 export type CustomPromptDetectOptions = {

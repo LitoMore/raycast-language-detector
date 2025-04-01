@@ -42,4 +42,3 @@ export const detect = async (text: string, options?: DetectOptions) => {
 
 	return undefined;
 };
-

@@ -4,11 +4,11 @@ import {languageCodeToName} from './utils.js';
 
 export const detect = (
 	text: string,
-	options: {languageCodeFormat: LanguageCodeFormat},
+	options?: {languageCodeFormat: LanguageCodeFormat},
 ): Language | undefined => {
 	const detector = new LanguageDetector();
 	const languageType =
-		options.languageCodeFormat === LanguageCodeFormat.TwoLetter
+		options?.languageCodeFormat === LanguageCodeFormat.TwoLetter
 			? 'iso2'
 			: 'iso3';
 	detector.setLanguageType(languageType);
