@@ -1,7 +1,6 @@
 import {AI, environment} from '@raycast/api';
-import {Language} from './types.js';
+import {Language, LanguageCodeFormat} from './types.js';
 import {languageCodeToName} from './utils.js';
-import {LanguageCodeFormat} from './index.js';
 
 export const makePrompt = (text: string, languageCodes?: string[]) => {
 	return [

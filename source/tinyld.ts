@@ -1,7 +1,6 @@
 import {detect as tinyDetect, toISO3} from 'tinyld';
-import {Language} from './types.js';
+import {Language, LanguageCodeFormat} from './types.js';
 import {languageCodeToName} from './utils.js';
-import {LanguageCodeFormat} from './index.js';
 
 export const detect = (
 	text: string,

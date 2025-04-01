@@ -1,7 +1,7 @@
 import {franc} from 'franc';
 import {iso6393To1} from 'iso-639-3';
 import {languageCodeToName} from './utils.js';
-import {LanguageCodeFormat} from './index.js';
+import {LanguageCodeFormat} from "./types.js";
 
 export const detect = (
 	text: string,

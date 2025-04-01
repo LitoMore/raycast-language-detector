@@ -2,6 +2,7 @@ import {AiDetectOptions, detect as aiDetect} from './ai.js';
 import {detect as francDetect} from './franc.js';
 import {detect as ldDetect} from './languagedetect.js';
 import {detect as tinyDetect} from './tinyld.js';
+import {LanguageCodeFormat} from "./types.js";
 
 export enum Detector {
 	AI = 'ai',
@@ -16,11 +17,6 @@ const detectorMap = {
 	[Detector.LanguageDetect]: ldDetect,
 	[Detector.TinyLD]: tinyDetect,
 };
-
-export enum LanguageCodeFormat {
-	TwoLetter = 'twoLetter',
-	ThreeLetter = 'threeLetter',
-}
 
 export type DetectOptions = {
 	detectors?: Detector[];
