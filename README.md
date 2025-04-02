@@ -39,18 +39,22 @@ tinyDetect("一緒に泣いてくれた人");
 
 ### raycast-language-detector
 
-This uses all possible detectors in the `Detector.AI`, `Detector.Franc`, `Detector.LanguageDetect`, `Detector.TinyLD` order. It there is no result, it will fallback to the next detector.
+This uses all possible detectors in the `Detector.AI`, `Detector.Franc`, `Detector.LanguageDetect`, `Detector.TinyLD`
+order. It there is no result, it will fallback to the next detector.
 
-The fallthrough order of detectors can be customized, you can simply pass in an array of `Detector` to `options.detectors`.
+The fallthrough order of detectors can be customized, you can simply pass in an array of `Detector` to
+`options.detectors`.
 
 ```typescript
 export declare const detect: (
 	text: string,
 	options?: {
 		detectors?: Detector[];
+		languageCodeFormat?: LanguageCodeFormat;
 		aiDetectOptions?: {
 			aiAskOptions?: AI.AskOptions;
 			languageCodes?: string[];
+			languageCodeFormat?: LanguageCodeFormat;
 		};
 	},
 ) => Promise<Language | undefined>;
@@ -67,7 +71,8 @@ await detect("Viel Glück");
 
 This uses the [Raycast AI](https://developers.raycast.com/api-reference/ai) for detecting text.
 
-You don't have to check user's permission to Raycast AI before using this. We already handled it for you. It will return a `undefined` if the user doesn't have access to Raycast AI.
+You don't have to check user's permission to Raycast AI before using this. We already handled it for you. It will return
+a `undefined` if the user doesn't have access to Raycast AI.
 
 ```typescript
 export declare const makePrompt: (
@@ -77,7 +82,11 @@ export declare const makePrompt: (
 
 export declare const detect: (
 	text: string,
-	options?: { aiAskOptions?: AI.AskOptions; languageCodes?: string[] },
+	options?: {
+		aiAskOptions?: AI.AskOptions;
+		languageCodes?: string[];
+		languageCodeFormat?: LanguageCodeFormat;
+	},
 ) => Promise<Language | undefined>;
 
 export declare const customPromptDetect: (
@@ -94,6 +103,7 @@ await detect("colour", { languageCodes: ["en_US", "en_GB"] });
 
 // Create a custom prompt which detects `en_US` and `en_GB` only
 const customPrompt = makePrompt("pieapple pizza", ["en_US", "en_GB"]);
+
 await customPromptDetect(customPrompt);
 //=> {languageCode: 'en_US', languageName: 'American English'}
 ```
@@ -103,7 +113,12 @@ await customPromptDetect(customPrompt);
 This uses the [franc](https://npmjs.com/franc) for detecting text.
 
 ```typescript
-export declare detect: (text: string) => Language | undefined;
+export declare const detect: (
+	text: string,
+	options?: {
+		languageCodeFormat?: LanguageCodeFormat;
+	},
+) => Language | undefined;
 ```
 
 ```typescript
@@ -115,10 +130,15 @@ detect("여기서요?");
 
 ### raycast-language-detector/languagedetect
 
-This uses the [languagedetect](https://npmjs.com/langugagedetect) for detecting text.
+This uses the [languagedetect](https://npmjs.com/languagedetect) for detecting text.
 
 ```typescript
-export declare const detect: (text: string) => Language | undefined;
+export declare const detect: (
+	text: string,
+	options?: {
+		languageCodeFormat?: LanguageCodeFormat;
+	},
+) => Language | undefined;
 ```
 
 ```typescript
@@ -133,7 +153,12 @@ detect("海纳百川，有容乃大");
 This uses the [tinyld](https://npmjs.com/tinyld) for detecting text.
 
 ```typescript
-export declare const detect: (text: string) => Language | undefined;
+export declare const detect: (
+	text: string,
+	options?: {
+		languageCodeFormat: LanguageCodeFormat;
+	},
+) => Language | undefined;
 ```
 
 ```typescript
@@ -149,9 +174,14 @@ It exposes some useful utilities for detecting languages.
 
 #### languageCodeToName(languageCode: string): string
 
-It uses JavaScript built-in [`Intl.DisplayNames`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DisplayNames#language_display_names) for converting language code to the name.
+It uses JavaScript built-in [
+`Intl.DisplayNames`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DisplayNames#language_display_names)
+for converting language code to the name.
 
-The input value can be a `languageCode` ["-" `scriptCode`] ["-" `regionCode` ] \*("-" `variant` ) subsequence of the unicode_language_id grammar in [UTS 35's Unicode Language and Locale Identifiers grammar](https://unicode.org/reports/tr35/#Unicode_language_identifier). `languageCode` is either a two letters ISO 639-1 language code or a three letters ISO 639-2 language code.
+The input value can be a `languageCode` ["-" `scriptCode`] ["-" `regionCode` ] \*("-" `variant` ) subsequence of the
+unicode_language_id grammar
+in [UTS 35's Unicode Language and Locale Identifiers grammar](https://unicode.org/reports/tr35/#Unicode_language_identifier).
+`languageCode` is either a two letters ISO 639-1 language code or a three letters ISO 639-2 language code.
 
 ```typescript
 import { languageCodeToName } from "raycast-language-detector/utils";
@@ -171,7 +201,8 @@ languageCodeToName("en_GB");
 
 ## Who's using `raycast-langauge-detector`?
 
-- [Language Detector](https://raycast.com/litomore/language-detector) - Detect languages through Raycast AI or third-party language detectors
+- [Language Detector](https://raycast.com/litomore/language-detector) - Detect languages through Raycast AI or
+  third-party language detectors
 
 ## License
 
