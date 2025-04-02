@@ -13,11 +13,11 @@ npm i raycast-language-detector
 ## Usages
 
 ```typescript
-import {detect} from "raycast-language-detector";
-import {detect as aiDetect} from "raycast-language-detector/ai";
-import {detect as francDetect} from "raycast-language-detector/franc";
-import {detect as langDetect} from "raycast-language-detector/languagedetect";
-import {detect as tinyDetect} from "raycast-language-detector/tinyld";
+import { detect } from "raycast-language-detector";
+import { detect as aiDetect } from "raycast-language-detector/ai";
+import { detect as francDetect } from "raycast-language-detector/franc";
+import { detect as langDetect } from "raycast-language-detector/languagedetect";
+import { detect as tinyDetect } from "raycast-language-detector/tinyld";
 
 await detect("Favourite colour");
 //=> {languageCode: 'en_GB', languageName: 'British English'}
@@ -54,13 +54,14 @@ export declare const detect: (
 		aiDetectOptions?: {
 			aiAskOptions?: AI.AskOptions;
 			languageCodes?: string[];
+			languageCodeFormat?: LanguageCodeFormat;
 		};
 	},
 ) => Promise<Language | undefined>;
 ```
 
 ```typescript
-import {detect} from "raycast-language-detector";
+import { detect } from "raycast-language-detector";
 
 await detect("Viel Glück");
 //=> {languageCode: 'de_DE', languageName: 'German (Germany)'}
@@ -82,11 +83,9 @@ export declare const makePrompt: (
 export declare const detect: (
 	text: string,
 	options?: {
+		aiAskOptions?: AI.AskOptions;
+		languageCodes?: string[];
 		languageCodeFormat?: LanguageCodeFormat;
-		aiDetectOptions?: {
-			aiAskOptions?: AI.AskOptions;
-			languageCodes?: string[]
-		};
 	},
 ) => Promise<Language | undefined>;
 
@@ -97,13 +96,14 @@ export declare const customPromptDetect: (
 ```
 
 ```typescript
-import {detect, customPromptDetect} from "raycast-language-detector/ai";
+import { detect, customPromptDetect } from "raycast-language-detector/ai";
 
-await detect("colour", {languageCodes: ["en_US", "en_GB"]});
+await detect("colour", { languageCodes: ["en_US", "en_GB"] });
 //=> {languageCode: 'en_GB', languageName: 'British English'}
 
 // Create a custom prompt which detects `en_US` and `en_GB` only
 const customPrompt = makePrompt("pieapple pizza", ["en_US", "en_GB"]);
+
 await customPromptDetect(customPrompt);
 //=> {languageCode: 'en_US', languageName: 'American English'}
 ```
@@ -113,32 +113,38 @@ await customPromptDetect(customPrompt);
 This uses the [franc](https://npmjs.com/franc) for detecting text.
 
 ```typescript
-export declare const detect: (text: string, options?: {
-	languageCodeFormat: LanguageCodeFormat
-}) => Language | undefined;
+export declare const detect: (
+	text: string,
+	options?: {
+		languageCodeFormat?: LanguageCodeFormat;
+	},
+) => Language | undefined;
 ```
 
 ```typescript
-import {detect} from "raycast-language-detect/franc";
+import { detect } from "raycast-language-detect/franc";
 
-detect("여기서요?", {languageCodeFormat: "twoLetter"});
+detect("여기서요?");
 //=> {languageCode: 'ko', languageName: 'Korean'}
 ```
 
 ### raycast-language-detector/languagedetect
 
-This uses the [languagedetect](https://npmjs.com/langugagedetect) for detecting text.
+This uses the [languagedetect](https://npmjs.com/languagedetect) for detecting text.
 
 ```typescript
-export declare const detect: (text: string, options?: {
-	languageCodeFormat: LanguageCodeFormat
-}) => Language | undefined;
+export declare const detect: (
+	text: string,
+	options?: {
+		languageCodeFormat?: LanguageCodeFormat;
+	},
+) => Language | undefined;
 ```
 
 ```typescript
-import {detect} from "raycast-language-detector/languagedetector";
+import { detect } from "raycast-language-detector/languagedetector";
 
-detect("海纳百川，有容乃大", {languageCodeFormat: "threeLetter"});
+detect("海纳百川，有容乃大");
 //=> {languageCode: 'zh', languageName: 'Chinese'}
 ```
 
@@ -147,13 +153,16 @@ detect("海纳百川，有容乃大", {languageCodeFormat: "threeLetter"});
 This uses the [tinyld](https://npmjs.com/tinyld) for detecting text.
 
 ```typescript
-export declare const detect: (text: string, options?: {
-	languageCodeFormat: LanguageCodeFormat
-}) => Language | undefined;
+export declare const detect: (
+	text: string,
+	options?: {
+		languageCodeFormat: LanguageCodeFormat;
+	},
+) => Language | undefined;
 ```
 
 ```typescript
-import {detect} from "raycast-language-detector/tinyld";
+import { detect } from "raycast-language-detector/tinyld";
 
 detect("一緒に泣いてくれた人");
 //=> {languageCode: 'jp', languageName: 'Japanese'}
@@ -175,7 +184,7 @@ in [UTS 35's Unicode Language and Locale Identifiers grammar](https://unicode.or
 `languageCode` is either a two letters ISO 639-1 language code or a three letters ISO 639-2 language code.
 
 ```typescript
-import {languageCodeToName} from "raycast-language-detector/utils";
+import { languageCodeToName } from "raycast-language-detector/utils";
 
 languageCodeToName("en");
 //=> 'English'

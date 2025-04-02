@@ -4,6 +4,7 @@ export type Language = {
 };
 
 export enum LanguageCodeFormat {
-	TwoLetter = 'twoLetter',
-	ThreeLetter = 'threeLetter',
+	ISO_639_1 = 'iso_639_1',
+	ISO_639_2 = 'iso_639_2',
+	ISO_639_3 = 'iso_639_3',
 }

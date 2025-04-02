@@ -4,14 +4,7 @@
 	"description": "Detect languages through Raycast AI or third-party language detectors",
 	"repository": "https://github.com/LitoMore/raycast-language-detector",
 	"type": "module",
-	"exports": {
-		".": "./distribution/index.js",
-		"./ai": "./distribution/ai.js",
-		"./franc": "./distribution/franc.js",
-		"./languagedetect": "./distribution/languagedetect.js",
-		"./tinyld": "./distribution/tinyld.js",
-		"./utils": "./distribution/utils.js"
-	},
+	"exports": "./distribution/index.js",
 	"files": [
 		"distribution"
 	],
