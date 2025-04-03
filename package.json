@@ -1,6 +1,6 @@
 {
 	"name": "raycast-language-detector",
-	"version": "0.2.2",
+	"version": "0.2.3",
 	"description": "Detect languages through Raycast AI or third-party language detectors",
 	"repository": "https://github.com/LitoMore/raycast-language-detector",
 	"type": "module",
