@@ -1,0 +1,2 @@
+export const sentenceEnglish =
+	"You have to remember those people who silently hold you tight in the dark, who make you laugh, who chat with you all night long, who come to visit you by car, who have cried with you, who are with you in the hospital, who always put you first, who take you around, who say they miss you. It's these people who make up the warmth in your life little by little, it's these warmth that keeps you away from the gloom, it's these warmth that makes you a good person.";

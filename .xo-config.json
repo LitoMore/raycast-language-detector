@@ -35,7 +35,7 @@
 	},
 	"overrides": [
 		{
-			"files": ["test.mjs"],
+			"files": ["*.{js,mjs}"],
 			"rules": {
 				"@typescript-eslint/consistent-type-imports": "off"
 			}

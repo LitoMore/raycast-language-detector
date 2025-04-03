@@ -5,20 +5,22 @@
 	"repository": "https://github.com/LitoMore/raycast-language-detector",
 	"type": "module",
 	"exports": {
-		".": "./distribution/index.js",
-		"./ai": "./distribution/ai.js",
-		"./franc": "./distribution/franc.js",
-		"./languagedetect": "./distribution/languagedetect.js",
-		"./tinyld": "./distribution/tinyld.js",
-		"./utils": "./distribution/utils.js"
+		".": "./distribution/source/index.js",
+		"./ai": "./distribution/source/ai.js",
+		"./franc": "./distribution/source/franc.js",
+		"./languagedetect": "./distribution/source/languagedetect.js",
+		"./tinyld": "./distribution/source/tinyld.js",
+		"./utils": "./distribution/source/utils.js"
 	},
+	"types": "distribution/source",
 	"files": [
-		"distribution"
+		"distribution/source"
 	],
 	"scripts": {
 		"prepublishOnly": "npm run build",
 		"build": "del-cli distribution && tsc",
-		"test": "xo"
+		"pretest": "npm run build",
+		"test": "xo && ava"
 	},
 	"keywords": [
 		"raycast",
@@ -37,8 +39,10 @@
 		"tinyld": "^1.3.4"
 	},
 	"devDependencies": {
+		"@ava/typescript": "^5.0.0",
 		"@sindresorhus/tsconfig": "^7.0.0",
 		"@types/node": "^22.13.14",
+		"ava": "^6.2.0",
 		"del-cli": "^6.0.0",
 		"eslint-plugin-import": "^2.31.0",
 		"typescript": "^5.8.2",
