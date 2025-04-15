@@ -196,6 +196,7 @@ languageCodeToName("en_GB");
 
 ## Who's using `raycast-langauge-detector`?
 
+- [Easy OCR](https://raycast.com/Rafo94/easy-ocr) - Use Tesseract OCR to extract text from screenshot
 - [Language Detector](https://raycast.com/litomore/language-detector) - Detect languages through Raycast AI or third-party language detectors
 
 ## License
