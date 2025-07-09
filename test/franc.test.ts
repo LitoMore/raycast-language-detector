@@ -1,9 +1,9 @@
 import test from 'ava';
+import {sentenceEnglish} from './_helper.test.js';
 import {
 	LanguageCodeFormat,
 	detect as francDetect,
 } from 'raycast-language-detector/franc';
-import {sentenceEnglish} from './_helper.test.js';
 
 test('detects English', (t) => {
 	t.deepEqual(francDetect(sentenceEnglish), {

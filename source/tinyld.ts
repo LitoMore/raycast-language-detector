@@ -1,6 +1,6 @@
 import {iso6393To2T} from 'iso-639-3';
 import {detect as tinyDetect, toISO3} from 'tinyld';
-import {Language, LanguageCodeFormat} from './types.js';
+import {type Language, LanguageCodeFormat} from './types.js';
 import {languageCodeToName} from './utils.js';
 
 export * from './types.js';

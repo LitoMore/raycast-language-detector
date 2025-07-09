@@ -1,8 +1,8 @@
-import {AiDetectOptions, detect as aiDetect} from './ai.js';
+import {type AiDetectOptions, detect as aiDetect} from './ai.js';
 import {detect as francDetect} from './franc.js';
 import {detect as ldDetect} from './languagedetect.js';
 import {detect as tinyDetect} from './tinyld.js';
-import {LanguageCodeFormat} from './types.js';
+import {type LanguageCodeFormat} from './types.js';
 
 export * from './types.js';
 
@@ -39,7 +39,9 @@ export const detect = async (text: string, options?: DetectOptions) => {
 			languageCodeFormat,
 			...aiDetectOptions,
 		});
-		if (language) return language;
+		if (language) {
+			return language;
+		}
 	}
 
 	return undefined;

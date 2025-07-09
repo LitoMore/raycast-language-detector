@@ -1,12 +1,12 @@
 import {AI, environment} from '@raycast/api';
 import {toISO2, toISO3} from 'tinyld';
-import {Language, LanguageCodeFormat} from './types.js';
+import {type Language, LanguageCodeFormat} from './types.js';
 import {languageCodeToName} from './utils.js';
 
 export * from './types.js';
 
-export const makePrompt = (text: string, languageCodes?: string[]) => {
-	return [
+export const makePrompt = (text: string, languageCodes?: string[]) =>
+	[
 		languageCodes
 			? `Here is a list of supported language codes: ${languageCodes.join(', ')}`
 			: 'Supported language codes can only be in the "xx_XX" format.',
@@ -18,12 +18,14 @@ export const makePrompt = (text: string, languageCodes?: string[]) => {
 		"(Please answer with the supported language codes I've mentioned above. Don't reply with any unsupported codes.)",
 		'(The answer format is one-line only, no commas, no spaces, no "xx", no "XX", and no extra characters.)',
 	].join('\n');
-};
 
 const ask = async (prompt: string, aiAskOptions?: AI.AskOptions) => {
 	const answer = await AI.ask(prompt, aiAskOptions);
 	const languageCode = answer.trim().toLowerCase();
-	if (languageCode.startsWith('und')) return undefined;
+	if (languageCode.startsWith('und')) {
+		return undefined;
+	}
+
 	const languageName = languageCodeToName(languageCode);
 	return {languageCode, languageName};
 };
@@ -38,12 +40,17 @@ export const detect = async (
 	text: string,
 	options: AiDetectOptions = {},
 ): Promise<Language | undefined> => {
-	if (!environment.canAccess(AI)) return undefined;
+	if (!environment.canAccess(AI)) {
+		return undefined;
+	}
+
 	const {aiAskOptions, languageCodes, languageCodeFormat} = options;
 	const prompt = makePrompt(text, languageCodes);
 
 	const aiResponse = await ask(prompt, aiAskOptions);
-	if (!aiResponse) return undefined;
+	if (!aiResponse) {
+		return undefined;
+	}
 
 	const code6391 = aiResponse.languageCode.slice(0, 2);
 	if (languageCodeFormat === LanguageCodeFormat.ISO_639_1) {
@@ -78,7 +85,10 @@ export const customPromptDetect = async (
 	prompt: string,
 	options: CustomPromptDetectOptions = {},
 ): Promise<Language | undefined> => {
-	if (!environment.canAccess(AI)) return undefined;
+	if (!environment.canAccess(AI)) {
+		return undefined;
+	}
+
 	const {aiAskOptions} = options;
 	return ask(prompt, aiAskOptions);
 };
