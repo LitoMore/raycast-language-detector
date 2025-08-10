@@ -40,11 +40,11 @@
 	},
 	"devDependencies": {
 		"@ava/typescript": "^6.0.0",
-		"@sindresorhus/tsconfig": "^7.0.0",
-		"@types/node": "^24.0.12",
-		"ava": "^6.4.0",
+		"@sindresorhus/tsconfig": "^8.0.1",
+		"@types/node": "^24.2.1",
+		"ava": "^6.4.1",
 		"del-cli": "^6.0.0",
-		"typescript": "^5.8.3",
-		"xo": "^1.1.1"
+		"typescript": "^5.9.2",
+		"xo": "^1.2.1"
 	}
 }
