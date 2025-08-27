@@ -13,6 +13,7 @@ export const makePrompt = (text: string, languageCodes?: string[]) =>
 		"(Please note a language may have different branches, like 'en' for English, 'en_US' for American English, and 'en_GB' for British English.)",
 		"(For example, some American English words are spelled differently in British English, like 'color' and 'colour'.)",
 		"(Chinese has different branches like 'zh_CN' for Simplified Chinese and 'zh_HK' for Traditional Chinese.)",
+		"(And some words may the internet slang, like '666' in Chinese means 'awesome', etc.)",
 		'Here are some texts below, please tell what the language is:',
 		text,
 		"(Please answer with the supported language codes I've mentioned above. Don't reply with any unsupported codes.)",
